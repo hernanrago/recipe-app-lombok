@@ -8,6 +8,8 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.TreeSet;
 
+import javax.transaction.Transactional;
+
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
@@ -46,6 +48,7 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
 		
 	}
 
+	@Transactional
 	private void initData() {
 		log.debug("RecipeBootstrap.initData()");
 		recipeRepository.saveAll(getRecipes());
